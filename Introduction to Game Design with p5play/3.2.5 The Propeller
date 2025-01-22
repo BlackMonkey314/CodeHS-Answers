@@ -1,0 +1,23 @@
+function setup() {
+    new Canvas(450, 450);
+    let propeller = new Sprite();
+    propeller.width = 300;
+    propeller.height = 20;
+    propeller.collider = "kinematic";
+    propeller.rotationSpeed = 2;
+    propeller.color = "#f2a90c";
+    
+}
+
+function draw() {
+    clear();
+    background("#c46ad4");
+    // Creates a new ball every time the mouse is clicked
+    if (mouse.presses()) {
+        let ball = new Sprite();
+        ball.diameter = 10;
+        ball.color = "white";
+        ball.x = mouse.x;
+        ball.y = mouse.y;
+    }
+}
