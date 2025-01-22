@@ -1,0 +1,141 @@
+// Declare graphic variables (graphics added in the SETUP code below)
+let pigeon;
+let cloud;
+
+function main() {
+    // Creates a timer that runs the animate function every 0.05 seconds
+    setTimer(animate, 50);
+}
+
+// This function is repeatedly called by the timer
+function animate() {
+    // Increases the X position of the cloud by 1
+    cloud.x = cloud.x + 1;
+
+    // --------> Write the code that will change the position of the
+    // pigeon every time this function is run
+    pigeon.x = pigeon.x + 2
+    pigeon.y = pigeon.y - 2
+    
+
+}
+
+main();
+
+
+
+
+
+
+// ===== SETUP CODE -- DON'T CHANGE ===== //
+
+
+
+function setupBirdScene() {
+    // Sets image for character
+    const IMG = "https://codehs.com/uploads/e5958f67624da0baebd6167ded5b54e5";
+    
+    // Creates background and character
+    initBackground("#b6e8fa", getWidth(), getHeight(), 0, 0);
+    pigeon = initCharacter(IMG, 50, 400);
+    cloud = initCloud();
+}
+
+function initCloud() {
+    let circles = [];
+
+    let circ1 = new Circle(45);
+    circ1.setColor('white');
+    circ1.setPosition(-20, 70);
+    circles.push(circ1);
+    add(circ1);
+
+    let circ2 = new Circle(60);
+    circ2.setColor('white');
+    circ2.setPosition(30, 60);
+    circles.push(circ2);
+    add(circ2);
+
+    let circ3 = new Circle(55);
+    circ3.setColor('white');
+    circ3.setPosition(70, 65);
+    circles.push(circ3);
+    add(circ3);
+
+    // Object that adjusts all graphics x, y values when x, y properties change
+    let obj = {
+        graphics: circles,
+
+        _x: 0, // Private property
+
+        // Getter for property 'x'
+        get x() {
+            return this._x;
+        },
+
+        // Setter for property 'x'
+        set x(value) {
+            if (value !== this._x) {
+            this._x = value;
+            this.onXChange(); // Call the method when 'x' changes
+            }
+        },
+
+        // Method to be called when 'x' changes
+        onXChange() {
+            // console.log("Property 'x' has changed to", this._x);
+            
+            for (let circ of this.graphics) {
+                circ.x += this._x;
+            }
+                this._x = 0;
+        },
+
+        _y: 0, // Private property
+
+        // Getter for property 'y'
+        get y() {
+            return this._y;
+        },
+
+        // Setter for property 'y'
+        set y(value) {
+            if (value !== this._y) {
+            this._y = value;
+            this.onYChange(); // Call the method when 'y' changes
+            }
+        },
+
+        // Method to be called when 'y' changes
+        onYChange() {
+            // console.log("Property 'y' has changed to", this._y);
+            
+            for (let circ of this.graphics) {
+                circ.y += this._y;
+            }
+                this._y = 0;
+        }
+
+    }
+
+    return obj;
+}
+
+// This function adds and initializes a character webimage
+function initCharacter(image, x, y) {
+    let character = new WebImage(image);
+    character.setPosition(x - 60, y - 113);
+    add(character);
+    
+    return character;
+}
+
+// This function adds and initializes a rectangle
+function initBackground(color, w, h, x, y) {
+    let rec = new Rectangle(w, h);
+    rec.setColor(color);
+    rec.setPosition(x, y);
+    add(rec);
+}
+
+setupBirdScene();
