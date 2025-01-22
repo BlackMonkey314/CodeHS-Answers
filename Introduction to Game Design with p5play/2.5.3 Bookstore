@@ -1,0 +1,19 @@
+function main() {
+    // Save the price of the book, $15, in a variable as a number:
+    let price = 15
+    
+    // Ask the user for the number of books they want to buy:
+    let books = readInt("How many books would you like to purchase?")
+    
+	// Calculate the total cost of the purchase:
+	let totalPrice = price * books 
+	
+	// Print out the total cost of the purchase:
+    console.log("Your total price is "+ totalPrice)
+    let payment = readLine("Would you like to pay cash or credit?")
+    console.log("Pay in "+ payment + " now.")
+    console.log("Have a nice day! Please come again!")
+
+}
+
+main();
