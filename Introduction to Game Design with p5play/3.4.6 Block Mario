@@ -1,0 +1,69 @@
+let coordinates;
+
+function setup() {
+    // Create your canvas:
+    new Canvas(480, 360);
+
+    // Add your sprites here:
+    let ground = new Sprite();
+    ground.width = 480;
+    ground.height = 45;
+    ground.y = height - ground.height / 2;
+    ground.color = '#d16628';
+    ground.scale = 2;
+    
+    let tunnel = new Sprite();
+    tunnel.x = 90;
+    tunnel.y = 267;
+    tunnel.width = 60;
+    tunnel.height = 50;
+    tunnel.color = '#41ed34';
+    
+    let mario = new Sprite();
+    mario.x = 90;
+    mario.y = 218;
+    mario.width = 30;
+    mario.height = 45;
+    mario.color = 'red';
+    
+    let platform = new Sprite();
+    platform.x = 255;
+    platform.y = 200;
+    platform.width = 175;
+    platform.height = 25;
+    platform.color = "#d16628";
+    
+    let coin1 = new Sprite();
+    coin1.x = 190;
+    coin1.y = 170;
+    coin1.radius = 10;
+    coin1.color = "#e6e212";
+    
+    let coin2 = new Sprite();
+    coin2.x = 220;
+    coin2.y = 170;
+    coin2.radius = 10;
+    coin2.color = "#e6e212";
+    
+    // Adds the mouse coordinates
+    mouseCoordinates();
+}
+
+function draw() {
+    // Set up your background color:
+    background('#4dcce8');
+
+    // Updates the mouse coordinates
+    coordinates.text = round(mouse.x, 1) + ', ' + round(mouse.y, 1);
+}
+
+// This function adds a mouse coordinate box to the screen
+function mouseCoordinates() {
+    coordinates = new Sprite();
+    coordinates.color = 'white';
+    coordinates.width = 80;
+    coordinates.height = 20;
+    coordinates.x = width - coordinates.width / 2 - 5;
+    coordinates.y = coordinates.height / 2 + 5;
+    coordinates.collider = 'none';
+}
