@@ -1,0 +1,46 @@
+function setup() {
+    new Canvas(450, 450);
+    world.gravity.y = 10;
+
+    let box = new Sprite();
+    box.width = 30;
+    box.height = 30;
+    box.x = 25;
+    box.y = 20;
+    box.rotation = 35;
+    box.mass = 500;
+    box.friction = 0;
+    box.color = '#f1c453';
+
+    let obstacle = new Sprite();
+    obstacle.width = 40;
+    obstacle.height = 40;
+    obstacle.x = 400;
+    obstacle.y = 288;
+    obstacle.mass = 20;
+    obstacle.color = '#f29e4c';
+
+    let ramp = new Sprite();
+    ramp.width = 600;
+    ramp.height = 300;
+    ramp.y = 420;
+    ramp.x = 120;
+    ramp.rotation = 35;
+    ramp.friction = 3;
+    ramp.color = '#bcd4e6';
+    ramp.collider = 'static';
+
+    let ground = new Sprite();
+    ground.width = 800;
+    ground.height = 300;
+    ground.y = 460;
+    ground.friction = 0.05;
+    ground.color = '#99c1de';
+    ground.collider = 'static';
+}
+
+function draw() {
+    // Sets background each frame
+    clear();
+    background('#d6e2e9');
+}
