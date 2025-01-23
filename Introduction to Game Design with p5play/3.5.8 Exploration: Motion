@@ -1,0 +1,86 @@
+let car, ramp1, ramp2, road1, road2, water;
+
+function setup() {
+    new Canvas(450, 450);
+    world.gravity.y = 10;
+
+    // Creates the bridge scene
+    setupScene();
+
+    car = new Sprite();
+    car.x = -300;
+    car.y = 270;
+    car.diameter = 20;
+    car.speed = 15;
+    car.bounciness = 0;
+    car.color = '#c71f37';
+    car.vel.x = 14;
+}
+
+function draw() {
+    clear();
+    background('#99c1de');
+
+    // Has the camera follow the car
+    camera.x = car.x;
+
+    // When the car collides with road2, it is going to
+    // apply "brakes" by turning on a rotation drag
+    if (car.collides(road2)) {
+		car.rotationDrag = 15;
+	} 
+
+    // When the car is in the water, it will slowly sink
+    // down to the bottom
+    if (car.overlapping(water)) {
+        car.vel.x = 0;
+        car.vel.y = 1;
+    }
+}
+
+// This function creates the road, bridge, and water scene
+function setupScene() {
+    noStroke();
+    ramp1 = new Sprite();
+    ramp1.x = 65;
+    ramp1.y = 255;
+    ramp1.width = 150;
+    ramp1.height = 20;
+    ramp1.bounciness = 0;
+    ramp1.rotation = -30;
+    ramp1.color = '#8e9aaf';
+    ramp1.collider = 'static';
+
+    ramp2 = new Sprite();
+    ramp2.x = 480;
+    ramp2.y = 255;
+    ramp2.width = 150;
+    ramp2.height = 20;
+    ramp2.bounciness = 0;
+    ramp2.rotation = 30;
+    ramp2.color = '#8e9aaf';
+    ramp2.collider = 'static';
+
+    road1 = new Sprite();
+    road1.x = -292;
+    road1.y = 290;
+    road1.width = 600;
+    road1.height = 20;
+    road1.color = '#8e9aaf';
+    road1.collider = 'static';
+
+    road2 = new Sprite();
+    road2.x = 840;
+    road2.y = 290;
+    road2.width = 600;
+    road2.height = 20;
+    road2.color = '#8e9aaf';
+    road2.collider = 'static';
+
+    water = new Sprite();
+    water.y = 600;
+    water.width = width * 10;
+    water.height = 500;
+    water.color = '#2c7da0';
+    water.collider = 'static';
+}
