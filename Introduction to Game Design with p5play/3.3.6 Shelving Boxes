@@ -1,0 +1,113 @@
+// When declaring multiple variables in one spot, you can use 
+// one line and separate each variable by a comma
+let coordinates, ground, box1, box2, box3, box4, box5; 
+
+function setup() {
+    new Canvas(450, 450);
+    world.gravity.y = 10;
+    // Turn on mouse coordinates
+    mouseCoordinates();
+    
+    // Sets up the initial scene.
+    setupScene();
+
+    // -----> Write your code here:
+    box1.x = 50
+    box1.y = 75
+    box2.x = 160
+    box2.y = 90
+    box3.x = 215
+    box3.y = 175
+    box4.x = 380
+    box4.y = 125
+    box5.x = 380
+    box5.y = 275
+}
+
+function draw() {
+    clear();
+    background('#2a9d8f');
+
+    // Updates mouse coordinates
+    coordinates.text = round(mouse.x, 1) + ', ' + round(mouse.y, 1);
+}
+
+// ######## Helper Functions Below - Don't Change ########## //
+
+function setupScene() {
+    setupGround();
+    setupBoxes();
+    setupShelves();
+}
+
+function setupGround() {
+    ground = new Sprite();
+    ground.width = width;
+    ground.height = 40;
+    ground.y = height - ground.height / 2;
+    ground.color = '#264653';
+    ground.collider = 'static';
+}
+
+function setupBoxes() {
+    let boxes = new Group();
+    boxes.width = 30;
+    boxes.height = 30;
+    boxes.y = ground.y - ground.height / 2 - boxes.height / 2 - 5;
+
+    box1 = new boxes.Sprite();
+    box1.x = 50;
+    box1.color = "#e9c46a";
+
+    box2 = new boxes.Sprite();
+    box2.x = 100;
+    box2.color = "#f4a261";
+
+    box3 = new boxes.Sprite();
+    box3.x = 150;
+    box3.color = "#e76f51";
+
+    box4 = new boxes.Sprite();
+    box4.x = 200;
+    box4.color = "#ec8c74";
+
+    box5 = new boxes.Sprite();
+    box5.x = 250;
+    box5.color = "#f0a390";
+}
+
+function setupShelves() {
+  let shelves = new Group();
+  shelves.color = '#264653';
+  shelves.w = 50;
+  shelves.h = 10;
+  shelves.tile = '-';
+  shelves.collider = 'static';
+
+  new Tiles(
+      [
+        '........',
+        '-.-.....',
+        '......-.',
+        '...-....',
+        '........',
+        '......-.',
+
+      ],
+      50,
+      50,
+      shelves.w + 5,
+      50
+    );
+}
+
+// Function that creates the coordinates and adds them to the canvas
+function mouseCoordinates() {
+    coordinates = new Sprite();
+    coordinates.color = 'white';
+    coordinates.width = 80;
+    coordinates.height = 20;
+    coordinates.x = width - coordinates.width / 2 - 5;
+    coordinates.y = coordinates.height / 2 + 5;
+    coordinates.collider = 'none';
+}
