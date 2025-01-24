@@ -1,0 +1,16 @@
+function setup() {
+    // Create a canvas and turn on gravity
+    new Canvas(450, 450);
+
+    // Create a new sprite and define its properties
+    let shapeShifter = new Sprite();
+    shapeShifter.width = 200;
+    shapeShifter.height = 400;
+    shapeShifter.color = 'blue';
+}
+
+function draw() {
+    // Sets background each frame
+    clear();
+    background('gold');
+}
