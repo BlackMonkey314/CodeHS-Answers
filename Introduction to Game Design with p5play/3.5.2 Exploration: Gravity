@@ -1,0 +1,33 @@
+function setup() {
+    new Canvas(450, 450);
+    // -----> Add gravity here:
+    world.gravity.y = 10;
+
+    let ball = new Sprite();
+    ball.diameter = 20;
+    ball.x = 100;
+
+    let box = new Sprite();
+    box.width = 50;
+    box.height = 20;
+    box.x = 250;
+}
+
+function draw() {
+    clear();
+    background('#b6e2dd');
+}
+
+/*
+1. If you want the gravity in this scene to simulate the gravity in our
+lives, what code would you type in?
+I would put world.gravity.y = 10; because our earth's gravity is pulling us
+down about 10m/s.
+
+
+2. Imagine a game where gravity pulls everything to the right. What code 
+would you need to write to set that up?
+I would need to write world.gravity.x = 10; because x = 10 would
+pull everything to the right
+
+*/
