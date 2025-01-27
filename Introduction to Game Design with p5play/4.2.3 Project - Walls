@@ -1,0 +1,76 @@
+let coordinates;
+
+let grass;
+let hole;
+
+function setup(){
+    new Canvas(450,520);
+    noStroke();
+    
+    setupHole();
+    
+    mouseCoordinates();
+}
+
+function draw(){
+    clear();
+    background("#37addb");
+    
+    
+    coordinates.text = round(mouse.x, 1) + ', ' + round(mouse.y, 1);
+}
+
+function setupHole(){
+    grass = new Sprite();
+    grass.y = 265;
+    grass.width = 270;
+    grass.height = 395;
+    grass.collider = 'none';
+    grass.color = ("darkgreen");
+    
+    topWall = new Sprite();
+    topWall.y = 65;
+    topWall.height = 15;
+    topWall.width = 295;
+    topWall.collider = 'static';
+    topWall.color = ("#a6a6a6");
+    
+    bottomWall = new Sprite();
+    bottomWall.y = 460;
+    bottomWall.height = 15;
+    bottomWall.width = 295;
+    bottomWall.collider = 'static';
+    bottomWall.color = ("#a6a6a6");
+    
+    leftWall = new Sprite();
+    leftWall.x = 85;
+    leftWall.width = 15;
+    leftWall.height = 400;
+    leftWall.collider = 'static';
+    leftWall.color = ("#a6a6a6");
+    
+    rightWall = new Sprite();
+    rightWall.x = 365;
+    rightWall.width = 15;
+    rightWall.height = 400;
+    rightWall.collider = 'static';
+    rightWall.color = ("#a6a6a6");
+    
+    hole = new Sprite();
+    hole.diameter = 25;
+    hole.x = random(120, 330);
+    hole.y = 95;
+    hole.color = ("black");
+    hole.collider = 'static';
+}
+
+
+function mouseCoordinates() {
+  coordinates = new Sprite();
+  coordinates.color = 'white';
+  coordinates.width = 80;
+  coordinates.height = 20;
+  coordinates.x = width - coordinates.width / 2 - 5;
+  coordinates.y = coordinates.height / 2 + 5;
+  coordinates.collider = 'none';
+}
